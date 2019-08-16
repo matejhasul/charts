@@ -152,6 +152,9 @@ spec:
         args:
 {{ toYaml .Values.metricsExporter.argsOverrides | indent 8 }}
 {{- end }}
+        env:
+        - name: DATA_SOURCE_NAME
+          value: "beard:beard@(172.20.0.11:3306)/"
         ports:
         - name: metrics
           containerPort: 9104

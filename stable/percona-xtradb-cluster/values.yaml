@@ -110,7 +110,7 @@ configFiles:
 ## When set to true will create sidecar for `prom/mysqld-exporter`
 ## metrics exporting
 metricsExporter:
-  enabled: false
+  enabled: true
   commandOverrides: []
   argsOverrides: []
 
