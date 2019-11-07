@@ -27,7 +27,8 @@ controller:
   ## extraArgs:
   ##   default-ssl-certificate: "<namespace>/<secret_name>"
   ##   reload-strategy: "reusesocket"
-  extraArgs: {}
+  #extraArgs: { healthz-port: 10253, watch-namespace: mhs }
+  extraArgs: { healthz-port: 10253, watch-namespace: haproxy-ingress }
 
   ## Additional environment variables to set
   extraEnvs: []
@@ -104,7 +105,7 @@ controller:
   # Required for use with CNI based kubernetes installations (such as ones set up by kubeadm),
   # since CNI and hostport don't mix yet. Can be deprecated once https://github.com/kubernetes/kubernetes/issues/23920
   # is merged
-  hostNetwork: false
+  hostNetwork: true
 
   # Optionally change this to ClusterFirstWithHostNet in case you have 'hostNetwork: true'.
   # By default, while using host network, name resolution uses the host's DNS. If you wish nginx-controller
@@ -126,7 +127,7 @@ controller:
 
   ## Use host ports 80 and 443
   daemonset:
-    useHostPort: false
+    useHostPort: true
 
     hostPorts:
       http: 80
@@ -262,7 +263,7 @@ controller:
     service:
       annotations: {}
       # prometheus.io/scrape: "true"
-      # prometheus.io/port: "10254"
+      # prometheus.io/port: "10255"
 
       clusterIP: ""
 

@@ -1,0 +1,17 @@
+---
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  annotations:
+    kubernetes.io/ingress.class: "haproxy"
+  name: mhs
+  namespace: haproxy-ingress
+spec:
+  rules:
+    - http:
+        paths:
+          - backend:
+              serviceName: my-service
+              servicePort: 80
+            path: /
+
